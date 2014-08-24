@@ -1,0 +1,4 @@
+RutubeShowcaseWidget
+====================
+
+Промо-виджет Rutube
