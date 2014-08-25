@@ -9,7 +9,7 @@ RutubeShowcaseWidget
 
 1. Описание
 2. Технические требования, рекомендации и ограничения
-3. API Rutube Widget
+3. Rutube Widget API
 4. Пример виджета
 
 ### Описание
@@ -34,42 +34,42 @@ RutubeShowcaseWidget
 
 - страница должна быть адартирована для отображения на всех современных устройствах, включая планшеты и смартфоны. Это достигается адаптивной либо "резиновой" версткой страницы.
 
-На сайте Rutube используется адаптивная верстка, ширина базовой единицы для которой составлялет `248px`. Соответственно, рекомендуемые breakpoints для адаптивной верстки виджета: `248px`, `496px`, `744px`, `992px`, `1240px` и `1488px`.
+На сайте Rutube используется адаптивная верстка с шириной базовой единицы `248px`. Соответственно, рекомендуемые breakpoints для адаптивной верстки виджета составляют `248px`, `496px`, `744px`, `992px`, `1240px` и `1488px`.
 
 Пример CSS-кода с применением указанных breakpoints в инструкциях [Media Queries](https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Media_queries):
 ```css
 @media all and (min-width: 1488px) {
-	// code for 6+ base units (including Full HD monitors)
+	*// code for 6+ base units (including Full HD monitors)*
 }
 ```
 ```css
 @media all and (min-width: 1240px) and (max-width: 1488px) {
-	// code for 5+ base units (including prevalent 1366px laptop monitors)
+	*// code for 5+ base units (including prevalent 1366px laptop monitors)*
 }
 ```
 ```css
 @media all and (min-width: 992px) and (max-width: 1240px) {
-	// code for 4+ base units (including iPad landscape mode)
+	*// code for 4+ base units (including iPad landscape mode)*
 }
 ```
 ```css
 @media all and (min-width: 744px) and (max-width: 992px) {
-	// code for 3+ base units (including iPad portrait mode)
+	*// code for 3+ base units (including iPad portrait mode)*
 }
 ```
 ```css
 @media all and (min-width: 496px) and (max-width: 744px) {
-    // code for 2+ base units (various smartphones landscape mode)
+    *// code for 2+ base units (various smartphones landscape mode)*
 }
 ```
 ```css
 @media all and (min-width: 248px) and (max-width: 496px) {
-	// code for 1+ base units (various smartphones portrait/landscape mode)
+	*// code for 1+ base units (various smartphones portrait/landscape mode)*
 }
 ```
 ```css
 @media all and (max-width: 248px) {
-	// code for 1 base unit (various smartphones portrait mode)
+	*// code for 1 base unit (various smartphones portrait mode)*
 }
 ```
 - при изменении высоты контентной области страницы (например, при скрытии каких-либо элементов) обязательно оповещение сайта Rutube через использование специального API (см. соответствующий раздел ниже). Также, обязательной является подписка через этот API на некоторые события от Rutube;
@@ -86,7 +86,7 @@ RutubeShowcaseWidget
 
 - страница не должна содержать материалов, потиворечащих законодательству РФ или нарушающих авторские права третьих лиц (в том числе изображения).
 
-### API Rutube Widget
+### Rutube Widget API
 
 Использование тега `<iframe>` в качестве контейнера для виджета несет в себе как положительные стороны (с точки зрения безопасности), так и некоторые неудобства для разработчиков. В частности, тег `<iframe>` не подстраивается под высоту контента страницы, которую он содержит. Высоту тегу `<iframe>` можно задать лишь в родительском окне, то есть на стороне сайта Rutube, причем, при кросс-доменном встраивании родительская и дочерняя страницы не могут обращаться к глобальным объектам `document` друг у друга. Для этой и других целей был разработан специальный API для работы с виджетом.
 
