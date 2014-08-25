@@ -44,37 +44,37 @@ RutubeShowcaseWidget
 ```
 ```css
 @media all and (min-width: 1240px) and (max-width: 1488px) {
-	// code for 5+ base units (including prevalent 1369px laptop's monitors)
+	// code for 5+ base units (including prevalent 1366px laptop monitors)
 }
 ```
 ```css
 @media all and (min-width: 992px) and (max-width: 1240px) {
-	// code for 4+ base units (including iPad's landscape mode)
+	// code for 4+ base units (including iPad landscape mode)
 }
 ```
 ```css
 @media all and (min-width: 744px) and (max-width: 992px) {
-	// code for 3+ base units (including iPad's portrait mode)
+	// code for 3+ base units (including iPad portrait mode)
 }
 ```
 ```css
 @media all and (min-width: 496px) and (max-width: 744px) {
-    // code for 2+ base units (various smartphones' landscape mode)
+    // code for 2+ base units (various smartphones landscape mode)
 }
 ```
 ```css
 @media all and (min-width: 248px) and (max-width: 496px) {
-	// code for 1+ base units (various smartphones' portrait mode)
+	// code for 1+ base units (various smartphones portrait/landscape mode)
 }
 ```
 ```css
 @media all and (max-width: 248px) {
-	// code for 1 base unit (various smartphones' portrait mode)
+	// code for 1 base unit (various smartphones portrait mode)
 }
 ```
 - при изменении высоты контентной области страницы (например, при скрытии каких-либо элементов) обязательно оповещение сайта Rutube через использование специального API (см. соответствующий раздел ниже). Также, обязательной является подписка через этот API на некоторые события от Rutube;
 
-- отступы на странице виджета (незаполненная прозрачная контентная область) слева и справа должны составлять `8px` - это особеность при встраивании на сайт Rutube;
+- отступы на странице виджета (незаполненная прозрачная контентная область) слева и справа должны составлять `8px` - это особеность для встраивания на сайт Rutube;
 
 - в дизайне виджета желательно использовать шрифт Open Sans. Для использования в CSS его можно подключить через сервис [Google Fonts](http://www.google.com/fonts/);
 
