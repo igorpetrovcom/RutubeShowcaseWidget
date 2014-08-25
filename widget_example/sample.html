@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Open Sans', Arial, sans-serif;
+        }
+        iframe {
+            display: block;
+        }
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+        }
+        .hidden {
+            display: none;
+        }
+        
+        .header {
+            position: relative;
+            margin: 0 8px;
+            background-color: #242424;
+            -webkit-border-radius: 6px 6px 0 0;
+            border-radius: 6px 6px 0 0;
+        }
+        .menu {
+            position: absolute;
+            left: 0;
+            bottom: 50px;
+            padding: 12px 30px;
+            font-size: 13px;
+            background: rgba(0, 0, 0, 0.6);
+            -webkit-border-radius: 0 6px 6px 0;
+            border-radius: 0 6px 6px 0;
+        }
+        .menu-list {
+            overflow: hidden;
+        }
+        .menu-list-item {
+            float: left;
+            margin: 0 2px 0 0;
+        }
+        .menu-list-link {
+            display: block;
+            padding: 6px 24px;
+            color: #fff;
+            text-decoration: none;
+            -webkit-border-radius: 3px;
+            border-radius: 3px;
+        }
+        .menu-list-link.active {
+            background: #488cf0;
+        }
+        .header-image {
+            display: none;
+            max-width: 100%;
+            margin: 0 auto;
+        }
+        .header-image-6 {
+            display: block;
+        }
+        .socials {
+            position: absolute;
+            left: 0;
+            top: 0;
+            padding: 11px 15px;
+            background: rgba(0, 0, 0, 0.6);
+            -webkit-border-radius: 6px 0;
+            border-radius: 6px 0;
+        }
+        .socials-list {
+            overflow: hidden;
+        }
+        .socials-list-item {
+            float: left;
+            margin: 0 15px 0 0;
+        }
+        .socials-list-item:last-child {
+            margin-right: 0;
+        }
+        .socials-item-link {
+            display: block;
+            width: 34px;
+            height: 34px;
+            background-image: url('img/socials.png');
+            background-repeat: no-repeat;
+        }
+        .socials-item-link.gplus {
+            background-position: 0 0;
+        }
+        .socials-item-link.vk {
+            background-position: -49px 0;
+        }
+        .socials-item-link.fb {
+            background-position: -98px 0;
+        }
+        .content {
+            margin: 0 8px;
+            border-top: 2px solid #3f252c;
+            border-bottom: 2px solid #3f252c;
+            background: url('img/content.png') 50% 0 repeat-x #1e1b22;
+            overflow: hidden;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .player-container {
+            position: relative;
+            float: left;
+            width: 916px;
+            height: 515px;
+            margin: 30px;
+        }
+        .rutube-player {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .proportions-keeper {
+            max-width: 100%;
+        }
+        .description-container {
+            padding: 36px 34px 24px 16px;
+        }
+        .description-title {
+            margin: 0 0 19px;
+            font-weight: 400;
+            font-size: 23px;
+            letter-spacing: 0.3px;
+            color: #fff;
+        }
+        .description-text {
+            font-size: 14px;
+            color: #726167;
+        }
+        .units {
+            display: table;
+            width: 100%;
+            height: 440px;
+        }
+        .units-list {
+            display: table-cell;
+            vertical-align: middle;
+            text-align: center;
+        }
+        .units-item {
+            display: inline-block;
+            width: 240px;
+            padding: 16px 0;
+        }
+        .text-content {
+            padding: 28px;
+        }
+        .text-content-title {
+            font-size: 18px;
+            color: #fff;
+        }
+        .text-content-description {
+            color: #a29c9f;
+            font-size: 14px;
+        }
+        .footer {
+            height: 141px;
+            margin: 0 8px;
+            background: url('img/1472/footer_1472.png') 50% 50% no-repeat #242424;
+            -webkit-border-radius: 0 0 6px 6px;
+            border-radius: 0 0 6px 6px;
+        }
+        
+        /***********************/
+        /** responsive layout **/
+        /***********************/
+        
+        /* 6+ карточек */
+        @media all and (min-width: 1488px) {
+            
+        }
+        
+        /* 5+ карточек */
+        @media all and (min-width: 992px) and (max-width: 1240px) {
+            .header-image {
+                display: none;
+            }
+            .header-image-5 {
+                display: block;
+            }
+            .player-container {
+                width: 682px;
+                height: 383px;
+            }
+            .footer {
+                height: 141px;
+                background: url('img/1224/footer_1224.png') 50% 50% no-repeat;
+            }
+        }
+        
+        /* 4+ карточки */
+        @media all and (min-width: 744px) and (max-width: 992px) {
+            .header-image {
+                display: none;
+            }
+            .header-image-4 {
+                display: block;
+            }
+            .player-container {
+                width: 442px;
+                height: 248px;
+                margin-bottom: 12px;
+            }
+            .description-container {
+                padding-top: 29px;
+                padding-left: 30px;
+            }
+            .footer {
+                height: 141px;
+                background: url('img/976/footer_976.png') 50% 50% no-repeat;
+            }
+        }
+        
+        /* 3+ карточки */
+        @media all and (min-width: 496px) and (max-width: 744px) {
+            .header-image {
+                display: none;
+            }
+            .header-image-3 {
+                display: block;
+            }
+            .player-container {
+                float: none;
+                width: 93%;
+                height: auto;
+                margin-left: auto;
+                margin-right: auto;
+                margin-bottom: 0;
+                margin-top: 22px;
+            }
+            .description-container {
+                width: 93%;
+                margin: 0 auto;
+                padding-right: 0;
+                padding-left: 0;
+            }
+            .footer {
+                height: 141px;
+                background: url('img/728/footer_728.png') 50% 50% no-repeat;
+            }
+        }
+        
+        /* 2+ карточки */
+        @media all and (min-width: 248px) and (max-width: 496px) {
+            .menu {
+                bottom: 0;
+            }
+            .menu-list-item {
+                float: none;
+            }
+            .header-image {
+                display: none;
+            }
+            .header-image-2 {
+                display: block;
+            }
+            .player-container {
+                float: none;
+                width: 91%;
+                height: auto;
+                margin: 12px auto 0;
+            }
+            .description-container {
+                width: 91%;
+                padding-top: 20px;
+                margin: 0 auto;
+            }
+            .footer {
+                height: 141px;
+                background: url('img/480/footer_480.png') 50% 50% no-repeat;
+            }
+        }
+        
+        /* 1+ карточка */
+        @media all and (max-width: 248px) {
+            .header-image {
+                display: none;
+            }
+            .header-image-1 {
+                display: block;
+            }
+            .player-container {
+                float: none;
+                width: 90%;
+                height: auto;
+                margin: 8px auto 0;
+            }
+            .description-container {
+                padding-top: 20px;
+            }
+            .footer {
+                height: 141px;
+                background: url('img/232/footer_232.png') 50% 50% no-repeat;
+            }
+        }
+    </style>
+    
+    <script src="//cdn.jsdelivr.net/domready/1.0.4/ready.min.js"></script>
+    <script>
+        window.RT = {};
+        
+        // события
+        RT.addEvent = function (elem, event, callback) {
+            'use strict';
+            
+            if (window.addEventListener) {
+                elem.addEventListener(event, callback);
+            } else {
+                elem.attachEvent('on' + event, callback);
+            }
+        };
+    </script>
+    
+    <script>
+        // tabs
+        RT.tabs = function (list) {
+            'use strict';
+            
+            var activeTabObject, TabObject, items, tab, tabId, $list;
+            
+            TabObject = function () {
+                this.tab = null;
+                this.pane = null;
+                
+                this.setClick = function () {
+                    RT.addEvent(this.tab, 'click', this.showTab);
+                }.bind(this);
+                
+                this.showTab = function () {
+                    if (this !== activeTabObject) {
+                        // deactivate active tab
+                        activeTabObject.tab.className = activeTabObject.tab.className.replace('active', '');
+                        activeTabObject.pane.className = activeTabObject.pane.className.replace('active', '');
+                        
+                        // activate this tab
+                        this.tab.className = this.tab.className + ' active';
+                        this.pane.className = this.pane.className + ' active';
+
+                        // set this tab as active object
+                        activeTabObject = this;
+                        
+                        // postmessage в родительское окно
+                        RT.sendMessage(window.parent, 'framewidget:setHeight', {
+							height: document.body.offsetHeight
+						});
+                        
+                        // пауза в плеере
+                        RT.player.pause();
+                    }
+                }.bind(this);
+            };
+            
+            $list = document.getElementById(list);
+            items = $list ? $list.getElementsByTagName('a') : [];
+            
+            for (var i=0; i<items.length; ++i) {
+                tab = new TabObject();
+                tab.tab = items[i];
+                tabId = items[i].getAttribute('id');
+                tab.pane = document.getElementById('content-' + tabId);
+                tab.setClick();
+                if (~items[i].className.indexOf('active')) {
+                    activeTabObject = tab;
+                }
+            }
+        };
+    </script>
+    
+    <script>
+        // player
+        RT.player = (function () {
+            'use strict';
+            
+            var $player;
+            
+            function init () {
+                updateVars();
+            };
+            
+            function updateVars () {
+                $player = document.getElementById('rutube-player');
+            };
+            
+            function pause () {
+                $player && RT.sendMessage($player.contentWindow, 'player:pause', {});
+            };
+            
+            return {
+                init: init,
+                pause: pause
+            };
+        })();
+    </script>
+    
+    <script>
+        RT.socialButtons = (function () {
+            'use strict';
+            
+            var $btnGplus, $btnVk, $btnFb, title, encodedUrl, winParams, share;
+            
+            function init (data) {
+                updateVars(data);
+                bindEvents();
+            };
+            
+            function updateVars (data) {
+                // DOM
+                $btnGplus = document.getElementById('gplus');
+                $btnVk = document.getElementById('vk');
+                $btnFb = document.getElementById('fb');
+                
+                // URLs
+                encodedUrl = encodeURIComponent(data.href);
+                winParams = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600';
+                share = {
+                    gplus: {
+                        url: ['https://plus.google.com/share?url=', encodedUrl].join(''),
+                        winTitle: 'Поделиться ссылкой в Google Plus'
+                    },
+                    vk: {
+                        url: ['http://vk.com/share.php?url=', encodedUrl].join(''),
+                        winTitle: 'Поделиться ссылкой в VK'
+                    },
+                    fb: {
+                        url: ['https://www.facebook.com/sharer/sharer.php?u=', encodedUrl].join(''),
+                        winTitle: 'Поделиться ссылкой в Facebook'
+                    }
+                };
+            };
+            
+            function bindEvents () {
+                RT.addEvent($btnGplus, 'click', shareGplus);
+                RT.addEvent($btnVk, 'click', shareVk);
+                RT.addEvent($btnFb, 'click', shareFb);
+            };
+            
+            function shareGplus () {
+                openWindow('gplus');
+            };
+            
+            function shareVk () {
+                openWindow('vk');
+            };
+            
+            function shareFb () {
+                openWindow('fb');
+            };
+            
+            function openWindow (social) {
+                window.open(share[social].url, share[social].winTitle, winParams);
+            };
+            
+            return {
+                init: init
+            };
+        }());
+    </script>
+	
+	<script>
+		// postmessages
+		RT.addEvent(window, 'message', function (e) {
+			var data = JSON.parse(e.data);
+			
+			switch (data.type) {
+				case 'framewidget:requestHeight':
+					RT.sendMessage(window.parent, 'framewidget:setHeight', {
+						height: document.body.offsetHeight
+					});
+					break;
+				case 'framewidget:deactivate':
+					RT.player.pause();
+					break;
+				case 'framewidget:initSocials':
+					RT.socialButtons.init(data.data);
+					break;
+			};
+		});
+		
+		RT.sendMessage = function (target, message, data) {
+			target.postMessage(JSON.stringify({
+				type: message,
+				data: data
+			}), '*');
+		};
+	</script>
+    
+    <script>
+        RT.init = function () {
+            'use strict';
+            
+            RT.player.init();
+            RT.tabs('menu-list');
+        };
+        
+        if (typeof domready === 'function') {
+            domready(RT.init);
+        } else {
+            // если не подгрузится domready из cdn
+            RT.addEvent(window, 'load', RT.init);
+        }
+    </script>
+</head>
+
+<body>
+    <div class="header">
+        <div class="socials">
+            <ul class="socials-list">
+                <li class="socials-list-item">
+                    <a id="gplus" class="socials-item-link gplus" href="javascript:void(0);"></a>
+                </li>
+                <li class="socials-list-item">
+                    <a id="vk" class="socials-item-link vk" href="javascript:void(0);"></a>
+                </li>
+                <li class="socials-list-item">
+                    <a id="fb" class="socials-item-link fb" href="javascript:void(0);"></a>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="menu">
+            <ul id="menu-list" class="menu-list">
+                <li class="menu-list-item">
+                    <a id="tab1" class="menu-list-link active" href="javascript:void(0);">Победитель последнего сезона</a>
+                </li>
+                <li class="menu-list-item">
+                    <a id="tab2" class="menu-list-link" href="javascript:void(0);">Архив</a>
+                </li>
+                <li class="menu-list-item">
+                    <a id="tab3" class="menu-list-link" href="javascript:void(0);">Правила</a>
+                </li>
+            </ul>
+        </div>
+        
+        <img class="header-image header-image-6" src="img/1472/header_1472.png" alt="" />
+        <img class="header-image header-image-5" src="img/1224/header_1224.png" alt="" />
+        <img class="header-image header-image-4" src="img/976/header_976.png" alt="" />
+        <img class="header-image header-image-3" src="img/728/header_728.png" alt="" />
+        <img class="header-image header-image-2" src="img/480/header_480.png" alt="" />
+        <img class="header-image header-image-1" src="img/232/header_232.png" alt="" />
+    </div>
+    <div class="content">
+        <div id="content-tab1" class="tab-content active">
+            <div class="player-container">
+                <iframe id="rutube-player" class="rutube-player" src="//rutube.ru/play/embed/6897976?sTitle=false&sAuthor=false&wmode=opaque" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowfullscreen></iframe>
+                <img class="proportions-keeper" src="img/proportions-keeper.png" alt="" />
+            </div>
+            <div class="description-container">
+                <h1 class="description-title">Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit</h1>
+                <div class="description-text">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam faucibus vehicula ultricies. Aliquam sit amet lobortis enim. Quisque at tempus arcu. Aenean in nisl felis. Ut pulvinar mattis eros, nec aliquam eros pretium scelerisque. Morbi sollicitudin tellus et erat ultrices interdum. Proin faucibus porta iaculis. Nullam enim diam, ultricies sit amet urna vitae, vulputate pretium justo. Donec lectus sem, tristique nec libero consequat, mattis condimentum ante.</p>
+                    
+                    <p>Suspendisse eget quam ac felis venenatis volutpat. Aenean eleifend nisl at consectetur luctus. Curabitur enim risus, dignissim ut tellus quis, elementum eleifend libero. Morbi vehicula tempus enim, sit amet porttitor dolor dignissim non. Vestibulum vel pharetra dui, vitae rhoncus tellus. Nunc nec blandit tellus. Sed egestas, libero vel congue rhoncus, nunc leo commodo lorem, quis posuere mi nunc nec odio. Pellentesque a sapien in lorem luctus volutpat sodales ac arcu. Donec at fringilla felis, non blandit odio. Nunc dignissim neque ac eros mattis cursus. Etiam et ligula congue, convallis enim nec, dignissim lorem. Cras at pellentesque arcu. Mauris ac auctor ante. Curabitur enim risus, dignissim ut tellus quis, elementum eleifend libero.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div id="content-tab2" class="tab-content">
+            <div class="units">
+                <ul class="units-list">
+                    <li class="units-item">
+                        <img src="img/archive/1.png" alt="" />
+                    </li>
+                    <li class="units-item">
+                        <img src="img/archive/2.png" alt="" />
+                    </li>
+                    <li class="units-item">
+                        <img src="img/archive/3.png" alt="" />
+                    </li>
+                    <li class="units-item">
+                        <img src="img/archive/4.png" alt="" />
+                    </li>
+                    <li class="units-item">
+                        <img src="img/archive/5.png" alt="" />
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <div id="content-tab3" class="tab-content">
+            <div class="text-content">
+                <div class="text-content-title">Lorem ipsum dolor</div>
+                <div class="text-content-description">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam id elit arcu. Duis tincidunt nunc nulla, vitae mattis libero pellentesque eget. Mauris viverra posuere volutpat. Cras urna lacus, tristique in lectus at, consequat commodo dolor. Mauris malesuada ornare adipiscing. Pellentesque interdum dui sodales urna lacinia venenatis. Suspendisse tincidunt posuere velit, eu placerat lectus dictum non. Integer a feugiat odio. Nulla pulvinar nulla velit, non sollicitudin nisl ultrices vel. Quisque sodales et sapien sit amet tempor.</p>
+                    
+                    <p>Nam adipiscing ligula non sapien tincidunt pellentesque. Vivamus sed urna sit amet erat fermentum suscipit. Proin interdum justo ultrices, condimentum massa vitae, consequat justo. Morbi sollicitudin nec nunc ut elementum. Maecenas mollis luctus augue, a accumsan justo ornare ac. Proin pharetra neque id vehicula posuere. Proin leo magna, condimentum nec orci sed, auctor vehicula ligula. Vestibulum congue tempus dolor ac consequat. Duis in justo eu tortor sodales tristique. Curabitur semper interdum metus. Maecenas interdum consequat nisl sed mattis.</p>
+                    
+                    <p>Duis id posuere tellus. Aliquam venenatis lacus vel enim mollis volutpat. Integer tristique nisl ut vestibulum vulputate. Maecenas tincidunt sagittis quam, eu gravida ante. Vestibulum id consectetur nulla. Cras sed mi vel odio luctus dictum. Donec ac nisl in leo dapibus ultricies et ut arcu. Aliquam et laoreet eros, ut pellentesque augue.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer"></div>
+</body>
+</html>
