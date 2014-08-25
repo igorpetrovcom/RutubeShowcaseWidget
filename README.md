@@ -1,9 +1,9 @@
 RutubeShowcaseWidget
 ====================
 
-<картинка>
-
 Промо-виджет на страницах Rutube - интерактивный рекламный формат для партнеров [видеохостинга Rutube](http://rutube.ru/).
+
+![alt tag](https://github.com/igorpetrovcom/RutubeShowcaseWidget/blob/master/RutubeShowcaseWidget.png)
 
 ### Содержание:
 
