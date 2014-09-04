@@ -1,11 +1,12 @@
 Промо-виджет Rutube
 ====================
 
-Промо-виджет - интерактивный рекламный формат для партнеров [видеохостинга Rutube](http://rutube.ru/).
+Промо-виджет - интерактивный рекламный формат для партнеров видеохостинга [Rutube](http://rutube.ru/).
 
 ![alt tag](https://github.com/igorpetrovcom/RutubeShowcaseWidget/blob/master/RutubeShowcaseWidget.png)
 
-## Содержание:
+Содержание:
+-----------
 
 1. Описание
 2. Технические требования и рекомендации
@@ -14,7 +15,7 @@
 
 ### Описание
 
-Промо-виджет представляет собой рекламную площадь, занимающую область основного контента на страницах Rutube.
+Промо-виджет представляет собой рекламное пространство, занимающее площадь основного контента на страницах Rutube.
 
 Главной особеностью этого рекламного формата является возможность добавлять в него интерактивные элементы, такие как внутренняя навигация (меню), выпадающие элементы, кликабельные изображения, видеоплеер и так далее.
 
@@ -34,29 +35,29 @@
 
 - страница должна корректно отображаться в последних версиях основных браузеров для ПК: Chrome, Firefox, IE, Safari, Opera.
 
-- страница должна быть адартирована для отображения на всех современных устройствах, включая планшеты и смартфоны. Это достигается адаптивной либо "резиновой" версткой страницы.
+- страница должна быть адартирована для отображения на всех современных устройствах, включая планшеты и смартфоны. Это достигается с помощью адаптивной либо "резиновой" верстки страницы.
 
 На сайте Rutube используется адаптивная верстка с шириной базовой единицы `248px`. Соответственно, рекомендуемые breakpoints для адаптивной верстки виджета составляют `248px`, `496px`, `744px`, `992px`, `1240px` и `1488px`.
 
 Пример CSS-кода с применением указанных breakpoints в инструкциях [Media Queries](https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Media_queries):
 ```css
 @media all and (min-width: 1488px) {
-	// code for 6+ base units (including Full HD monitors)
+    // code for 6+ base units (including Full HD monitors)
 }
 ```
 ```css
 @media all and (min-width: 1240px) and (max-width: 1488px) {
-	// code for 5+ base units (including widespread 1366px laptop monitors)
+    // code for 5+ base units (including widespread 1366px laptop monitors)
 }
 ```
 ```css
 @media all and (min-width: 992px) and (max-width: 1240px) {
-	// code for 4+ base units (including iPad landscape mode)
+    // code for 4+ base units (including iPad landscape mode)
 }
 ```
 ```css
 @media all and (min-width: 744px) and (max-width: 992px) {
-	// code for 3+ base units (including iPad portrait mode)
+    // code for 3+ base units (including iPad portrait mode)
 }
 ```
 ```css
@@ -66,17 +67,17 @@
 ```
 ```css
 @media all and (min-width: 248px) and (max-width: 496px) {
-	// code for 1+ base units (various smartphones portrait/landscape mode)
+    // code for 1+ base units (various smartphones portrait/landscape mode)
 }
 ```
 ```css
 @media all and (max-width: 248px) {
-	// code for 1 base unit (various smartphones portrait mode)
+    // code for 1 base unit (various smartphones portrait mode)
 }
 ```
-- при изменении высоты контентной области страницы (например, при скрытии каких-либо элементов) обязательно оповещение сайта Rutube через использование специального API (см. соответствующий раздел ниже). Также, обязательной является подписка через этот API на некоторые события от Rutube;
+- при изменении высоты контента страницы (например, при скрытии каких-либо элементов) обязательно оповещение сайта Rutube через использование специального API (см. соответствующий раздел ниже). Также, обязательной является подписка через этот API на некоторые события от Rutube;
 
-- отступы на странице виджета (незаполненная прозрачная контентная область) слева и справа должны составлять `8px` - это особеность для встраивания на сайт Rutube;
+- отступы слева и справа на странице виджета (незаполненная прозрачная область) должны составлять `8px` - это особеность для встраивания на сайт Rutube;
 
 - в дизайне виджета желательно использовать шрифт Open Sans. Для использования в CSS его можно подключить через сервис [Google Fonts](http://www.google.com/fonts/);
 
@@ -94,45 +95,45 @@
 
 Работа API основана на использовании интерфейса [window.postMessage()](https://developer.mozilla.org/en-US/docs/Web/API/Window.postMessage). Страница виджета может как отправлять сообщения сайту Rutube, так и принимать их.
 
-События, которые может отправлять страница виджета, и на которые отреагирует сайт Rutube, должны быть объектами, преобразоваными в строку с помощью метода `JSON.stringify()`.
+События, которые может отправлять страница виджета, и на которые отреагирует сайт Rutube, должны быть объектами, преобразоваными в строку, например, с помощью метода `JSON.stringify()`.
 
 Шаблон для отправки сообщений:
 ```javascript
 window.parent.postMessage(JSON.stringify({
-	type: 'some:event',
-	data: 'some data'
+    type: 'some:event',
+    data: 'some data'
 }), '*');
 ```
 В настоящий момент виджет может отправить сайту Rutube один тип события:
 
 `framewidget:setHeight` - изменение высоты контента.
 
-Когда на странице виджета изменяется высота контента (например, при скрытии каких-либо элементов), должно быть отправлено это событие. В параметрах должна быть указана высота страницы.
+Когда на странице виджета изменяется высота контента (например, при скрытии каких-либо элементов), должно быть отправлено это событие. В параметре `height` должна быть указана высота страницы.
 
 Пример:
 ```javascript
 window.parent.postMessage(JSON.stringify({
-	type: 'framewidget:setHeight',
-	data: {
-		height: 800
-	}
+    type: 'framewidget:setHeight',
+    data: {
+        height: 800
+    }
 }), '*');
 ```
-В свою очередь события, приходящие от сайта Rutube, должны быть преобразованы из строки в объект с помощью метода `JSON.parse()`.
+В свою очередь события, приходящие от сайта Rutube, могут быть преобразованы из строки в объект с помощью метода `JSON.parse()`.
 
 Пример:
 ```javascript
 window.addEventListener('message', function (event) {
-	var message = JSON.parse(event.data);
-	console.log(message.type); // some type
+    var message = JSON.parse(event.data);
+    console.log(message.type); // some type
 });
 ```
 
 Шаблон приходящих сообщений:
 ```javascript
 {
-	type: 'event:type',
-	data: 'some data'
+    type: 'event:type',
+    data: 'some data'
 }
 ```
 События, на которые может подписаться страница виджета:
@@ -142,8 +143,8 @@ window.addEventListener('message', function (event) {
 Пример:
 ```javascript
 {
-	type: 'framewidget:requestHeight',
-	data: {}
+    type: 'framewidget:requestHeight',
+    data: {}
 }
 ```
 `framewidget:deactivate` - событие, когда область с виджетом становится скрытой на сайте Rutube. Если в данный момент в виджете проигрывается видео или аудио, необходимо их приостановить. Если подобных активных действий в виджете не предусмотрено, событие можно игнорировать.
@@ -151,17 +152,17 @@ window.addEventListener('message', function (event) {
 Пример:
 ```javascript
 {
-	type: 'framewidget:deactivate',
-	data: {}
+    type: 'framewidget:deactivate',
+    data: {}
 }
 ```
-`framewidget:initSocials` - событие с параметрами для инициализации кнопок социального шаринга, если они предусмотрены. В настоящий момент передается url с адресом страницы Rutube, который необходимо расшаривать.
+`framewidget:initSocials` - событие с параметрами для инициализации кнопок социального шаринга, если они предусмотрены. Отправляется один раз по событию `window.onload` страницы виджета. В параметрах передается url страницы с виджетом на сайте Rutube, который необходимо расшаривать.
 ```javascript
 {
-	type: 'framewidget:initSocials',
-	data: {
-		href: 'http://rutube.ru/#!/widget'
-	}
+    type: 'framewidget:initSocials',
+    data: {
+        href: 'http://rutube.ru/#!/widget'
+    }
 }
 ```
 
