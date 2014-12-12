@@ -1,4 +1,3 @@
-Промо-виджет Rutube
-===================
+####Промо-виджет Rutube
 
-Репозторий переехал по адресу https://github.com/igorpetrov/RutubeShowcaseWidget.
+Промо-виджет переехал по адресу: https://github.com/igorpetrov/RutubeShowcaseWidget.
